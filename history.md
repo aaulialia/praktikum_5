@@ -49,7 +49,7 @@
 - **Langkah berikutnya:** Buka terminal baru (atau mulai ulang VS Code jika perlu), lalu jalankan `git --version`.
 
 ## 2026-11-16 — Persiapan push GitHub
-- **Dikerjakan:** Menginisialisasi repository lokal pada branch `main`, memastikan `.env` diabaikan Git, dan memverifikasi production build berhasil.
-- **Keputusan:** Belum mengonfigurasi remote GitHub karena URL repository tujuan belum tersedia.
-- **Masalah:** Repository belum memiliki remote; belum ada commit atau push.
-- **Langkah berikutnya:** Dapatkan URL repository GitHub tujuan, lalu commit dan push setelah memeriksa daftar file staged.
+- **Dikerjakan:** Menginisialisasi repository lokal pada branch `main`, memverifikasi `.env` diabaikan dan tidak staged, memastikan production build berhasil, membuat commit awal `d6276f0`, mengonfigurasi `origin` ke `https://github.com/aaulialia/praktikum_5.git`, dan push branch `main`.
+- **Keputusan:** Menggunakan branch `main`; file `.env`, `node_modules`, dan `dist` tidak disertakan. Autentikasi dilakukan melalui Git Credential Manager setelah pengguna menyetujui scope OAuth yang ditampilkan GitHub.
+- **Masalah:** Push awal tertahan karena sesi autentikasi belum tersedia; setelah otorisasi, push berhasil dan remote branch cocok dengan commit lokal.
+- **Langkah berikutnya:** Repository sudah tersedia di GitHub; lanjutkan pengembangan sesuai tahap yang disetujui.
