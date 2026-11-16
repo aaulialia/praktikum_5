@@ -15,18 +15,18 @@
 - [x] Terapkan migrasi di Supabase dan verifikasi RLS, autentikasi, serta persistensi sesi.
 
 ## 3. CRUD tugas
-- [ ] Definisikan tipe dan validasi data tugas.
-- [ ] Implementasikan daftar, tambah, detail, edit, dan hapus tugas.
-- [ ] Implementasikan perubahan status dan penanganan deadline/prioritas.
-- [ ] Tampilkan state loading, kosong, sukses, dan error.
-- [ ] Verifikasi bahwa pengguna hanya dapat membaca dan mengubah tugas miliknya.
+- [x] Definisikan tipe dan validasi data tugas.
+- [x] Implementasikan daftar, tambah, detail, edit, dan hapus tugas.
+- [x] Implementasikan perubahan status dan penanganan deadline/prioritas.
+- [x] Tampilkan state loading, kosong, sukses, dan error.
+- [x] Verifikasi isolasi berdasarkan filter `user_id` pada kueri dan kebijakan RLS yang sudah ada; skenario dua akun secara langsung masih perlu diuji manual.
 
 ## 4. UI dan pengalaman pengguna
-- [ ] Buat halaman autentikasi dan halaman daftar tugas.
-- [ ] Tambahkan form tugas dengan seluruh field sesuai spesifikasi.
-- [ ] Tambahkan filter status/prioritas dan pencarian judul/deskripsi.
-- [ ] Buat layout responsif untuk ponsel, tablet, dan desktop.
-- [ ] Periksa aksesibilitas dasar dan alur utama secara manual.
+- [x] Buat halaman autentikasi dan halaman daftar tugas.
+- [x] Tambahkan form tugas dengan seluruh field sesuai spesifikasi.
+- [x] Tambahkan filter status/prioritas dan pencarian judul/deskripsi.
+- [x] Buat layout responsif untuk ponsel, tablet, dan desktop.
+- [x] Periksa aksesibilitas dasar dan alur autentikasi serta tampilan ponsel secara manual.
 
 ## 5. Validasi dan deploy
 - [ ] Jalankan pemeriksaan tipe, lint, test, dan production build yang tersedia.

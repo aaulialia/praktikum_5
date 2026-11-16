@@ -1,32 +1,52 @@
-# React + TypeScript + Vite
+# Taskflow
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Taskflow adalah aplikasi pencatatan tugas pribadi dengan React, Vite, TypeScript, dan Supabase. Pengguna dapat mendaftar, masuk, lalu mengelola tugasnya sendiri.
 
-Currently, two official plugins are available:
+## Fitur
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Registrasi, login, dan logout menggunakan Supabase Auth.
+- Tambah, lihat, edit, hapus, dan ubah status tugas.
+- Simpan deskripsi, prioritas, dan deadline.
+- Cari berdasarkan judul/deskripsi serta filter menurut status/prioritas.
+- Tampilan responsif untuk ponsel, tablet, dan desktop.
+- Isolasi data per pengguna melalui filter `user_id` dan Row Level Security (RLS).
 
-## React Compiler
+## Menjalankan secara lokal
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. Pasang dependensi:
 
-## Expanding the Oxlint configuration
+   ```sh
+   npm install
+   ```
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+2. Salin `.env.example` menjadi `.env`, lalu isi URL proyek Supabase dan anon/publishable key:
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+   ```text
+   VITE_SUPABASE_URL=https://your-project.supabase.co
+   VITE_SUPABASE_ANON_KEY=your-public-anon-key
+   ```
+
+   File `.env` tidak boleh di-commit. Jangan gunakan `service_role` key di frontend.
+
+3. Jika menyiapkan proyek Supabase baru, jalankan SQL pada `supabase/migrations/20261116100000_create_tasks.sql` di Supabase SQL Editor.
+
+4. Jalankan aplikasi:
+
+   ```sh
+   npm run dev
+   ```
+
+Buka URL lokal yang ditampilkan Vite. Registrasi dan login dapat memerlukan konfirmasi email sesuai pengaturan Supabase Auth.
+
+## Pemeriksaan
+
+```sh
+npm run build
+npm run lint
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+`npm run build` menjalankan pemeriksaan TypeScript dan membuat production build.
+
+## Deploy ke Vercel
+
+Tambahkan `VITE_SUPABASE_URL` dan `VITE_SUPABASE_ANON_KEY` pada Environment Variables proyek Vercel, lalu redeploy. Variabel lokal di `.env` tidak otomatis tersedia di Vercel.

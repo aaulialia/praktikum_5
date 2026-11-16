@@ -53,3 +53,21 @@
 - **Keputusan:** Menggunakan branch `main`; file `.env`, `node_modules`, dan `dist` tidak disertakan. Autentikasi dilakukan melalui Git Credential Manager setelah pengguna menyetujui scope OAuth yang ditampilkan GitHub.
 - **Masalah:** Push awal tertahan karena sesi autentikasi belum tersedia; setelah otorisasi, push berhasil dan remote branch cocok dengan commit lokal.
 - **Langkah berikutnya:** Repository sudah tersedia di GitHub; lanjutkan pengembangan sesuai tahap yang disetujui.
+
+## 2026-11-16 — Diagnosis deployment Vercel
+- **Dikerjakan:** Meninjau screenshot deployment dan memeriksa nama variabel yang dibaca klien Supabase serta keberadaan variabel lokal tanpa menampilkan nilainya.
+- **Keputusan:** Error menunjukkan environment variables belum tersedia pada build Vercel. Belum mengubah pengaturan Vercel atau mengirim nilai `.env`.
+- **Masalah:** Deployment produksi tidak menerima `VITE_SUPABASE_URL` dan `VITE_SUPABASE_ANON_KEY`.
+- **Langkah berikutnya:** Pengguna memilih login dan deploy manual. Tidak ada perubahan pada konfigurasi Vercel; setelah variabel Production ditambahkan dan redeploy selesai, verifikasi URL produksi.
+
+## 2026-11-16 — Permintaan push ulang dan aplikasi siap pakai
+- **Dikerjakan:** Memeriksa status repository dan branch remote. Repository GitHub sudah berisi seluruh berkas terlacak pada `main`; `.env` tetap diabaikan. Menemukan bahwa fitur CRUD tugas dan UI daftar tugas belum diimplementasikan.
+- **Keputusan:** Tidak memasukkan `.env` ke Git. Tidak mulai implementasi lanjutan sebelum cakupan/izin tahap berikutnya dikonfirmasi.
+- **Masalah:** Aplikasi saat ini baru memiliki fondasi autentikasi dan halaman sesi placeholder, sehingga belum memenuhi fungsi task manager yang siap dipakai.
+- **Langkah berikutnya:** Menunggu konfirmasi apakah akan mengimplementasikan CRUD tugas dan UI sesuai `spec.md`, lalu commit/push hasilnya. Konfigurasi environment Vercel dan deployment tetap dilakukan manual oleh pengguna.
+
+## 2026-11-16 — Implementasi CRUD dan UI task manager
+- **Dikerjakan:** Setelah pengguna menyetujui cakupan, dibuat akses data CRUD yang membatasi kueri dengan `user_id`, form tugas, kartu tugas, perubahan status, penghapusan dengan konfirmasi, pencarian, filter status/prioritas, ringkasan, state loading/error/kosong/sukses, dan layout responsif. README diperbarui dengan langkah menjalankan lokal dan konfigurasi Supabase/Vercel. Tahap 3 dan 4 ditandai selesai di `plan.md`.
+- **Keputusan:** Tetap memakai anon/publishable key di frontend dan kebijakan RLS yang sudah ada; tidak mengubah migrasi atau spesifikasi. `.env` tidak di-stage.
+- **Masalah:** `npm run build` berhasil. `npm run lint` masih gagal karena Application Control Windows memblokir native binding Oxlint. Alur autentikasi dan tampilan ponsel diuji di browser; pengujian CRUD langsung dengan dua akun Supabase belum dijalankan.
+- **Langkah berikutnya:** Jalankan skenario dua akun (A membuat tugas, B masuk dan memastikan tugas A tidak terlihat) serta smoke test CRUD pada Supabase; lalu atur environment variables Vercel dan deploy manual. Setelah itu push perubahan kode dan dokumen, tanpa `.env`.
